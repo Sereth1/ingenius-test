@@ -1,4 +1,3 @@
-// Content type defines the type of content (text, video, audio, podcast) and its data
 export type Content = {
   type: "text" | "video" | "audio" | "podcast";
   data: string;

@@ -59,7 +59,6 @@ export default function CourseDetailsPage() {
             </div>
           </div>
 
-          {/* Course content */}
           <div className="p-10 space-y-6">
             <p className="text-xl text-gray-800 leading-relaxed">
               {course.description}

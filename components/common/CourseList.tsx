@@ -1,20 +1,11 @@
 "use client";
+import { Course } from "@/types/courseTypes";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-
-interface Module {
-  title: string;
-}
-
-interface Course {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-  modules: Module[];
-}
+import { useRef, useState } from "react";
+import HeroMessage from "../coursesPage/HeroMessage";
 
 interface Props {
   filteredCourses: Course[] | undefined;
@@ -23,6 +14,33 @@ interface Props {
 export default function CoursesList({ filteredCourses }: Props) {
   const router = useRouter();
   const [expandedCourseId, setExpandedCourseId] = useState<number | null>(null);
+  const coursesRef = useRef<HTMLDivElement[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const gsapContextRef = useRef<any>(null);
+
+  useGSAP(() => {
+    if (gsapContextRef.current) {
+      gsapContextRef.current.revert();
+    }
+
+    if (filteredCourses) {
+      gsapContextRef.current = gsap.context(() => {
+        gsap.from(coursesRef.current, {
+          opacity: 0,
+          y: 50,
+          stagger: 0.3,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      });
+    }
+
+    return () => {
+      if (gsapContextRef.current) {
+        gsapContextRef.current.revert();
+      }
+    };
+  }, [filteredCourses]);
 
   function handleCourseClick(id: number) {
     router.push(`/courses/${id}`);
@@ -34,15 +52,19 @@ export default function CoursesList({ filteredCourses }: Props) {
 
   return (
     <div className="mt-10 p-10">
+      {!filteredCourses && <HeroMessage />}
       {filteredCourses && (
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {filteredCourses.map((course) => (
+          {filteredCourses.map((course, index) => (
             <div
               key={course.id}
+              ref={(el) => {
+                if (el) coursesRef.current[index] = el;
+              }}
               className={`border p-6 rounded-lg bg-white shadow hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between`}
               style={{
                 minHeight: "500px",
-                height: expandedCourseId === course.id ? "auto" : "400px",
+                height: expandedCourseId === course.id ? "auto" : "500px",
                 overflow: "hidden",
               }}
             >

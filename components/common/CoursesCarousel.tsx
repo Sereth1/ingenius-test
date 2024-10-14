@@ -67,13 +67,13 @@ export default function CoursesCarousel() {
       <div className="flex items-center justify-between mb-4">
         <button
           onClick={handlePrevious}
-          className="text-lg text-gray-600 hover:text-gray-900"
+          className="text-lg text-black hover:text-white"
         >
           Previous
         </button>
         <button
           onClick={handleNext}
-          className="text-lg text-gray-600 hover:text-gray-900"
+          className="text-lg text-black hover:text-white"
         >
           Next
         </button>
@@ -94,7 +94,9 @@ export default function CoursesCarousel() {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-xl font-bold mb-2">{course.title}</h3>
+              <h3 className="text-xl font-bold mb-2 text-black">
+                {course.title}
+              </h3>
               <p className="text-gray-700">{course.description}</p>
             </div>
           </div>

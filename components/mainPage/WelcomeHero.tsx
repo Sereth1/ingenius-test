@@ -72,9 +72,9 @@ export default function WelcomeHero() {
       <div
         ref={cardRef}
         style={{ visibility: "hidden" }}
-        className="absolute top-0 left-0 w-full min-h-screen flex flex-col items-center justify-center bg-gray-800 text-white p-10 z-20"
+        className="absolute top-0 left-0 w-full min-h-screen flex flex-col items-center justify-center bg-gray-500 text-white p-10 z-20"
       >
-        <h1 className="text-4xl font-bold mb-4">Time to Learn!</h1>
+        <h1 className="text-4xl font-bold mb-4">Find your Course</h1>
         <CoursesCarousel />
       </div>
     </div>

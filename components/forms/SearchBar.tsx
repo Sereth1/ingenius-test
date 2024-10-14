@@ -55,47 +55,40 @@ export default function SearchBar({ courses, setFilteredResults }: Props) {
   }
 
   return (
-    <div className="m-10">
-      <div className="border flex bg-purple-500 p-6 rounded-full justify-between items-center gap-5">
-        <div className="flex items-center">
-          <h1 className="text-4xl font-bold text-white">StarCourse</h1>
-        </div>
+    <div className="p-4">
+      <div className="border bg-purple-500 p-6 rounded-lg justify-between items-center gap-4 flex flex-col md:flex-row">
+        <h1 className="text-3xl md:text-4xl  font-bold text-white text-center mb-4 md:mb-0 pr-64">
+          StarCourse
+        </h1>
 
         <form
-          action="submit"
-          className="flex items-center gap-4 text-black"
+          className="flex flex-col gap-4 w-full md:flex-row md:items-center"
           onSubmit={handleSubmit}
         >
           <input
             type="text"
-            className="rounded-xl p-3 w-[600px] border border-gray-400"
-            placeholder="Search courses..."
+            className="rounded-lg p-3 w-full md:w-[300px] lg:w-[500px] text-black border border-gray-400"
+            placeholder="Search "
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
 
-          <label htmlFor="sort" className="sr-only">
-            Sort by
-          </label>
           <select
             id="sort"
             value={sorting}
             onChange={(e) => setSorting(e.target.value)}
-            className="rounded-xl p-2 border border-gray-400 bg-white"
+            className="rounded-lg p-2 border border-gray-400 text-black w-full md:w-[150px]"
           >
             <option value="">Sort By</option>
             <option value="increasing">Increasing Price</option>
             <option value="decreasing">Decreasing Price</option>
           </select>
 
-          <label htmlFor="priceRange" className="sr-only">
-            Price Range
-          </label>
           <select
             id="priceRange"
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            className="rounded-xl p-2 border border-gray-400 bg-white"
+            className="rounded-lg p-2 border border-gray-400 text-black w-full md:w-[150px]"
           >
             <option value="">Price Range</option>
             <option value="10">Up to $10</option>
@@ -104,20 +97,22 @@ export default function SearchBar({ courses, setFilteredResults }: Props) {
             <option value="50">$50+</option>
           </select>
 
-          <button
-            type="submit"
-            className="rounded-xl p-3 bg-blue-500 text-white font-semibold hover:bg-blue-600 transition-all duration-300"
-          >
-            Surprise Me
-          </button>
+          <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
+            <button
+              type="submit"
+              className="rounded-lg p-3 w-full md:w-auto border text-white font-semibold hover:bg-green-400 transition-all"
+            >
+              Search
+            </button>
 
-          <button
-            type="button"
-            onClick={handleReset}
-            className="rounded-xl p-3 bg-red-500 text-white font-semibold hover:bg-red-600 transition-all duration-300 ml-4"
-          >
-            Reset
-          </button>
+            <button
+              type="button"
+              onClick={handleReset}
+              className="rounded-lg p-3 w-full md:w-auto bg-red-500 text-white font-semibold hover:bg-red-600 transition-all"
+            >
+              Reset
+            </button>
+          </div>
         </form>
       </div>
     </div>

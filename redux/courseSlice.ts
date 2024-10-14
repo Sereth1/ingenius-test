@@ -15,14 +15,10 @@ const initialState: CoursesState = {
   error: null,
 };
 
-// Async action to simulate fetching the courses from an API
 export const fetchAllCourses = createAsyncThunk(
   "courses/fetchCourses",
   async () => {
-    // Simulate a delay for the mock data
-    return new Promise<Course[]>((resolve) =>
-      setTimeout(() => resolve(mockCourses), 1000)
-    );
+    return new Promise<Course[]>((resolve) => resolve(mockCourses));
   }
 );
 

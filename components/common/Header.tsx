@@ -35,7 +35,7 @@ export default function Header() {
                 Home
               </div>
             </Link>
-            <Link href="/courses" passHref>
+            <Link href="/find-your-course" passHref>
               <div
                 className="text-white cursor-pointer rounded-full px-4 py-2 hover:bg-slate-100 hover:text-black transition-all duration-300"
                 aria-label="Courses"

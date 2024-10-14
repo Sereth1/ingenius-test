@@ -1,12 +1,27 @@
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import useFetchCourses from "@/hooks/useFetchCourses";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function CoursesCarousel() {
   const { courses, status, error } = useFetchCourses();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsToShow, setItemsToShow] = useState(3);
   const router = useRouter();
+
+  useEffect(() => {
+    const updateItemsToShow = () => {
+      setItemsToShow(window.innerWidth < 768 ? 1 : 3);
+    };
+
+    updateItemsToShow();
+
+    window.addEventListener("resize", updateItemsToShow);
+
+    return () => {
+      window.removeEventListener("resize", updateItemsToShow);
+    };
+  }, []);
 
   const handlePrevious = () => {
     if (status === "succeeded") {
@@ -42,7 +57,6 @@ export default function CoursesCarousel() {
     return <div className="text-center">No courses available</div>;
   }
 
-  const itemsToShow = window.innerWidth < 768 ? 1 : 3;
   const currentCourses = courses.slice(
     currentIndex,
     currentIndex + itemsToShow

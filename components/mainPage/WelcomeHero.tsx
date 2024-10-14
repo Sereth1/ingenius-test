@@ -48,7 +48,6 @@ export default function WelcomeHero() {
 
   return (
     <div className="relative min-h-screen">
-      {/* Welcome Section */}
       <div className="flex flex-col items-center justify-center min-h-screen p-10 relative z-10 bg-black text-white">
         <div ref={titleRef}>
           <h1 className="text-4xl font-bold text-center mb-4">
@@ -70,10 +69,9 @@ export default function WelcomeHero() {
         </div>
       </div>
 
-      {/* Full Screen Card */}
       <div
         ref={cardRef}
-        style={{ visibility: "hidden" }} // Initially hide the element
+        style={{ visibility: "hidden" }}
         className="absolute top-0 left-0 w-full min-h-screen flex flex-col items-center justify-center bg-gray-800 text-white p-10 z-20"
       >
         <h1 className="text-4xl font-bold mb-4">Time to Learn!</h1>

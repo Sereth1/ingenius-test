@@ -1,34 +1,12 @@
-type Content = {
-  type: "text" | "video" | "audio" | "podcast";
-  data: string;
-};
-
-type Lesson = {
-  title: string;
-  description: string;
-  topics: string[];
-  content: Content[];
-};
-
-type Module = {
-  title: string;
-  lessons: Lesson[];
-};
-
-type Course = {
-  id: number;
-  title: string;
-  description: string;
-  modules: Module[];
-};
-
-// Example course data
+import { Course } from "@/types/courseTypes";
 const courses: Course[] = [
   {
     id: 1,
     title: "Introduction to Web Development",
     description:
       "Learn the fundamentals of web development, covering HTML, CSS, and JavaScript.",
+    price: 20.99,
+    image: "/images/web.png",
     modules: [
       {
         title: "HTML Basics",
@@ -92,6 +70,8 @@ const courses: Course[] = [
     title: "JavaScript Programming",
     description:
       "Dive into JavaScript programming and learn to create interactive web applications.",
+    price: 9.99,
+    image: "/images/js.png",
     modules: [
       {
         title: "JavaScript Basics",
@@ -120,6 +100,8 @@ const courses: Course[] = [
     title: "React Fundamentals",
     description:
       "Learn the basics of React, a popular JavaScript library for building user interfaces.",
+    price: 69.99,
+    image: "/images/react.png",
     modules: [
       {
         title: "Introduction to React",
@@ -148,6 +130,8 @@ const courses: Course[] = [
     title: "Python for Beginners",
     description:
       "Start your programming journey with Python, a versatile and beginner-friendly language.",
+    price: 39.99,
+    image: "/images/python.png",
     modules: [
       {
         title: "Python Basics",
@@ -177,6 +161,8 @@ const courses: Course[] = [
     title: "Data Science Essentials",
     description:
       "Explore the fundamentals of data science, including statistics and machine learning.",
+    price: 79.99,
+    image: "/images/data.png",
     modules: [
       {
         title: "Introduction to Statistics",

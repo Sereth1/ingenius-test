@@ -1,4 +1,5 @@
 "use client";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Link from "next/link";
 import React, { useRef, useEffect } from "react";
@@ -6,7 +7,7 @@ import React, { useRef, useEffect } from "react";
 export default function Header() {
   const start = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (start.current) {
       gsap.fromTo(
         start.current,
@@ -41,14 +42,6 @@ export default function Header() {
                 aria-label="Courses"
               >
                 Courses
-              </div>
-            </Link>
-            <Link href="/contact" passHref>
-              <div
-                className="text-white cursor-pointer rounded-full px-4 py-2 hover:bg-slate-100 hover:text-black transition-all duration-300"
-                aria-label="Contact"
-              >
-                Contact
               </div>
             </Link>
           </div>

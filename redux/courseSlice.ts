@@ -1,6 +1,6 @@
 "use client";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { Course } from "@/data/course"; // Assuming the type is still needed
+import { Course } from "@/data/course";
 
 interface CoursesState {
   courses: Course[];

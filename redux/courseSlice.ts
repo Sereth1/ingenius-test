@@ -1,6 +1,6 @@
 "use client";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { Course, courses as mockCourses } from "@/data/course"; // Adjust the path to your data file
+import { Course } from "@/data/course"; // Assuming the type is still needed
 
 interface CoursesState {
   courses: Course[];
@@ -10,17 +10,18 @@ interface CoursesState {
 
 const initialState: CoursesState = {
   courses: [],
-
   status: "idle",
   error: null,
 };
 
-export const fetchAllCourses = createAsyncThunk(
-  "courses/fetchCourses",
-  async () => {
-    return new Promise<Course[]>((resolve) => resolve(mockCourses));
+export const fetchAllCourses = createAsyncThunk("fetchCourses", async () => {
+  const response = await fetch("/api/courses");
+  if (!response.ok) {
+    throw new Error("Failed to fetch courses");
   }
-);
+  const data = await response.json();
+  return data;
+});
 
 const coursesSlice = createSlice({
   name: "courses",
